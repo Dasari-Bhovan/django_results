@@ -1,27 +1,187 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% block content %}
-    This is results page
-    <div class="card-content">
-        <form action="" method="POST" class="form">
-            {% csrf_token %}
-            <input name="Rollno" required id="Rollno" type="text" minlength="10" maxlength="10">
-            <button type="submit">Get Result</button>
-        </form>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .card-content{
+                text-align: center;
+            }
+            .img{
+                display: inline-block;
+                margin: 2.5rem 0 1.5rem 0;
+            }
+            .about{
+                font-size: 1.563rem;
+                color: rgb(255, 102, 0);
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            input[type="text"], select{
+                border-color: rgb(62, 68, 70);
+                width: 25%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-right: 1rem;
+            }
+            .submit-btn{
+                background-color: rgb(204, 82, 0);
+                border-color: initial;
+                color: rgb(232, 230, 227);
+                text-decoration-color: initial;
+                border: 2px;
+                border-radius: 4px;
+                padding: 12px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 8px 0px;
+                cursor: pointer;
+            }
+            .result-data{
+                margin-top: 1.5rem;
+            }
+            table {
+                font-family: arial, sans-serif;
+                font-size: small;
+                border-collapse: collapse;
+                width:50%;
+                border-color: rgb(58, 62,65);
+                border: 1px solid #dddddd;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            td, th {
+                text-align: center;
+                padding: 8px;
 
-    </div>
-    <div>
-        {{result}}
-    </div>
-    {% endblock content %}
+            }
+            tr:nth-child(even) {
+            background-color: rgb(255, 136, 0);
+        }
 
-</body>
+        </style>
+    </head>
+    <body>
+        {% block content %}
+        <div class="card-content">
+            <form action="" method="POST" class="form">
+                {% csrf_token %}
+                <img class="img" src="https://www.vvitguntur.com/images/vvit-wood-150.png" alt="">
+                <h3 class="about">Vasireddy Venkatadri Institute of Technology(Autonomous)
+                    <br>
+                    II B.Tech I Semester (R20) Regular Examinations, Nov/Dec 2022 Results
+                </h3>
+                <div class="fields">
+                    <input name="Rollno" required id="Rollno" type="text" minlength="10" maxlength="10" size="15" placeholder="Enter your Roll Number">
+                    <button class="submit-btn" type="submit">Get Result</button>
+                </div>
+            </form>
+            <div class="result-data">
+                {% if result %}
+                    <table border="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <th colspan="2">{% if result %}{{ result.0 }}{% endif %}</th>
+                                <td>{% if result %}{{ result.1 }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">{% if result %}{{ result.2}}{% endif %}</th>
+                                <td>{% if result %}{{ result.3}}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">{% if result %}Subject{% endif %}</th>
+                                <th colspan="2">{% if result %}Grade{% endif %}</th>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:left">{% if result %}{{ result.4}}{% endif %}</td>
+                                <td colspan="2">{% if result %}{{ result.5}}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:left">{% if result %}{{ result.6}}{% endif %}</td>
+                                <td colspan="2">{% if result %}{{ result.7}}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:left">{% if result %}{{ result.8}}{% endif %}</td>
+                                <td colspan="2">{% if result %}{{ result.9}}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:left">{% if result %}{{ result.10}}{% endif %}</td>
+                                <td colspan="2">{% if result %}{{ result.11}}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:left">{% if result %}{{ result.12}}{% endif %}</td>
+                                <td colspan="2">{% if result %}{{ result.13}}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:left">{% if result %}{{ result.14}}{% endif %}</td>
+                                <td colspan="2">{% if result %}{{ result.15}}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:left">{% if result %}{{ result.16}}{% endif %}</td>
+                                <td colspan="2">{% if result %}{{ result.17}}{% endif %}</td>
+                            </tr>
+                            {% if result.18 %}
+                                <tr>
+                                    <td colspan="2" style="text-align:left">{% if result %}{{ result.18}}{% endif %}</td>
+                                    <td colspan="2">{% if result %}{{ result.19}}{% endif %}</td>
+                                </tr>
+                            {% endif %}
+                            {% if result.20 %}
+                                <tr>
+                                    <td colspan="2" style="text-align:left">{% if result %}{{ result.20}}{% endif %}</td>
+                                    <td colspan="2">{% if result %}{{ result.21}}{% endif %}</td>
+                                </tr>
+                            {% endif %}
+                            {% if result.22 %}
+                                <tr>
+                                    <td colspan="2" style="text-align:left">{% if result %}{{ result.22}}{% endif %}</td>
+                                    <td colspan="2">{% if result %}{{ result.23}}{% endif %}</td>
+                                </tr>
+                            {% endif %}
+                            {% if result.24 %}
+                                <tr>
+                                    <td colspan="2" style="text-align:left">{% if result %}{{ result.24}}{% endif %}</td>
+                                    <td colspan="2">{% if result %}{{ result.25}}{% endif %}</td>
+                                </tr>
+                            {% endif %}
+                            {% if result.26 %}
+                                <tr>
+                                    <td colspan="2" style="text-align:left">{% if result %}{{ result.26}}{% endif %}</td>
+                                    <td colspan="2">{% if result %}{{ result.27}}{% endif %}</td>
+                                </tr>
+                            {% endif %}
+                            {% if result.26 %}
+                                <tr>
+                                    <td colspan="2" style="text-align:left">{% if result %}{{ result.28}}{% endif %}</td>
+                                    <td colspan="2">{% if result %}{{ result.29}}{% endif %}</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+
+                    </table>
+                </div>
+                <button onclick="printpage()" class="submit-btn">print</button>
+            {% endif %}
+        </div>
+        {% endblock content %}
+        <script>
+            function printpage() {
+               window.print();
+            }
+        </script>
+
+    </body>
 </html>
